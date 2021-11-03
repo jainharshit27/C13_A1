@@ -43,13 +43,29 @@ while True:
             pygame.quit()
             sys.exit()
         
+        #Check if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1, if yes:
+                #set start_time = pygame.time.get_ticks(). Similarly,
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                #end_time = pygame.time.get_ticks()
+                
+                #find difference between start_time and end_time
+                #find minimum value among diff and 1000. Multiply the resultant value to 13.5 and assign the value to power
+                #create a tuple called impulse with value (power*1, 0)
                 arrow_body.body_type = pymunk.Body.DYNAMIC
+                #assign arrow_body the apply_impulse_at_world_point(impulse, arrow_body.position) method.
                 
                 flying_arrows.append(arrow_body)
                 arrow_body, arrow_shape = create_arrow()
                 space.add(arrow_body, arrow_shape)      
-                
+    
+    #Check if pygame.mouse.get_pressed()[0] which checks if the left mouse click is pressed, if yes:
+        #print(pygame.mouse.get_pressed()) to explain them the tuple printed that 3 values belong to 3 mouse keys
+        #calculate current_time using pygame.time.get_ticks()
+        #calculate diff by subtracting start_time with current_time
+        #create power and assign min(diff, 1000)
+        #create variable h and assign power / 2
+        #run function pygame.draw.line(screen, (255, 0, 0), (650, 550), (650, 550 - h), 10) to draw the powerbar.
+        
     space.debug_draw(draw_options)
     
     #space reload
